@@ -1,0 +1,185 @@
+# ============================================================
+# ENVIRONMENT / SECRETS
+# ============================================================
+**/.env
+**/.env.*
+!**/.env.example
+
+*.pem
+*.key
+*.keystore
+*.jks
+
+
+# ============================================================
+# IDE / EDITOR
+# ============================================================
+**/.vscode/
+**/.idea/
+
+*.swp
+*.swo
+*~
+
+.DS_Store
+Thumbs.db
+
+
+# ============================================================
+# LOGS
+# ============================================================
+*.log
+**/logs/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ============================================================
+# GENERIC BUILD / CACHE
+# ============================================================
+**/build/
+**/dist/
+**/out/
+**/.cache/
+**/coverage/
+
+**/tmp/
+**/temp/
+
+*.tmp
+*.bak
+
+
+# ============================================================
+# NODE / NPM / YARN / PNPM
+# ============================================================
+**/node_modules/
+
+**/.npm/
+**/.pnpm-store/
+
+**/.yarn/cache/
+**/.yarn/unplugged/
+
+**/.vite/
+**/.next/
+**/.nuxt/
+
+.eslintcache
+
+
+# ============================================================
+# PYTHON
+# ============================================================
+**/__pycache__/
+**/.venv/
+**/venv/
+**/env/
+
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+*.py[cod]
+*.egg-info/
+
+
+# ============================================================
+# JAVA / SPRING / GRADLE / MAVEN
+# ============================================================
+**/target/
+**/.gradle/
+
+*.class
+
+
+# ============================================================
+# FLUTTER / DART
+# ============================================================
+**/.dart_tool/
+**/.pub-cache/
+
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+
+# Flutter build
+mobile/build/
+
+# Flutter Android
+mobile/android/.gradle/
+mobile/android/build/
+mobile/android/app/build/
+mobile/android/local.properties
+
+# Flutter iOS
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/ephemeral/
+
+
+# ============================================================
+# REACT NATIVE
+# ============================================================
+mobile/node_modules/
+
+mobile/android/.gradle/
+mobile/android/build/
+mobile/android/app/build/
+
+mobile/ios/Pods/
+mobile/ios/build/
+
+
+# ============================================================
+# ANDROID
+# ============================================================
+**/.gradle/
+**/local.properties
+
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+
+*.apk
+*.aab
+*.ap_
+*.dex
+
+
+# ============================================================
+# iOS / XCODE
+# ============================================================
+**/Pods/
+**/DerivedData/
+
+**/xcuserdata/
+**/*.xcuserstate
+
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+
+# ============================================================
+# C# / .NET
+# ============================================================
+**/bin/
+**/obj/
+
+*.user
+*.suo
+
+
+# ============================================================
+# GENERATED / BINARY
+# ============================================================
+*.exe
+*.dll
+
+*.zip
+*.tar
+*.tar.gz
