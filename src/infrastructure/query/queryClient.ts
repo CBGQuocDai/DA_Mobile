@@ -1,2 +1,7 @@
-// TODO: Cấu hình QueryClient dùng chung khi tích hợp TanStack Query.
-export {};
+import { QueryClient } from '@tanstack/react-query';
+
+export const createQueryClient = () => new QueryClient({
+  defaultOptions: {
+    queries: { staleTime: 60000, retry: 1, refetchOnWindowFocus: false },
+  },
+});
