@@ -7,3 +7,12 @@
   --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
 }
+
+/* The auth field wrapper supplies the visible rose focus ring. */
+input[id^='auth-input-'],
+input[id^='auth-input-']:focus,
+input[id^='auth-input-']:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  caret-color: #e11d48;
+}

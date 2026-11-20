@@ -1,6 +1,9 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 import { AppIcon } from '@/presentation/components/common/AppIcon';
+import { BrandLogo } from '@/presentation/components/customer/layout/BrandLogo';
+import { UserAvatar } from '@/presentation/components/customer/layout/UserAvatar';
+import type { CustomerUser } from '@/shared/types/auth.types';
 import { CustomerTheme as C } from '@/shared/constants/customerTheme.constants';
 
 interface HomeHeaderProps {
@@ -8,19 +11,17 @@ interface HomeHeaderProps {
   onQueryChange: (value: string) => void;
   onSearch: () => void;
   onAccountPress: () => void;
+  user?: CustomerUser | null;
 }
 
-export function HomeHeader({ query, onQueryChange, onSearch, onAccountPress }: HomeHeaderProps) {
+export function HomeHeader({ query, onQueryChange, onSearch, onAccountPress, user }: HomeHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
-        <View style={styles.brand}>
-          <View style={styles.brandIcon}><AppIcon name="headphones" color={C.accent} size={21} /></View>
-          <Text accessibilityRole="header" style={styles.wordmark}>audio<Text style={styles.brandAccent}>book</Text><Text style={styles.brandDot}>.</Text></Text>
-        </View>
-        <Pressable accessibilityLabel="Mở trang cá nhân" accessibilityRole="button" onPress={onAccountPress}
+        <BrandLogo />
+        <Pressable accessibilityLabel={user ? `Mở tài khoản ${user.fullName}` : 'Mở trang đăng nhập'} accessibilityRole="button" onPress={onAccountPress}
           style={({ pressed }) => [styles.account, pressed && styles.pressed]}>
-          <AppIcon name="user" size={23} color={C.text} />
+          <UserAvatar user={user} size={38} />
         </Pressable>
       </View>
       <View style={styles.search}>
@@ -51,11 +52,6 @@ export function HomeHeader({ query, onQueryChange, onSearch, onAccountPress }: H
 const styles = StyleSheet.create({
   container: { paddingHorizontal: 22, paddingTop: 8, paddingBottom: 18, gap: 16 },
   topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  brand: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  brandIcon: { width: 31, height: 34, alignItems: 'center', justifyContent: 'center' },
-  wordmark: { fontSize: 25, letterSpacing: -1.1, fontWeight: '800', color: C.text },
-  brandAccent: { fontWeight: '600' },
-  brandDot: { color: C.accent, fontSize: 29 },
   account: { width: 42, height: 42, borderRadius: 21, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: C.border },
   pressed: { opacity: 0.6 },
   search: { height: 48, flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 15, paddingHorizontal: 15, backgroundColor: '#F5F6F8', borderWidth: 1, borderColor: '#EFF0F3' },

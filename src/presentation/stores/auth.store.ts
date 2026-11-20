@@ -1,2 +1,1 @@
-// TODO: Trạng thái phiên đăng nhập trong bộ nhớ; lưu token qua infrastructure/storage.
-export {};
+export { customerAuth as authStore } from '@/composition/customerAuth';

@@ -11,6 +11,7 @@ import { HeroBookshelf } from '@/presentation/components/customer/home/HeroBooks
 import { HomeHeader } from '@/presentation/components/customer/home/HomeHeader';
 import { HOME_BOOKS } from '@/presentation/components/customer/home/home.mock';
 import { useCatalog } from '@/presentation/hooks/customer/useCatalog';
+import { useCustomerAuth } from '@/presentation/hooks/customer/useCustomerAuth';
 import { CustomerTheme as C } from '@/shared/constants/customerTheme.constants';
 
 const normalizeSearch = (value: string) =>
@@ -18,6 +19,7 @@ const normalizeSearch = (value: string) =>
 
 export function HomePage() {
   const router = useRouter();
+  const { user } = useCustomerAuth();
   const featured = useCatalog({ page: 0, size: 5 });
   const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const discoveryY = useRef(0);
@@ -45,9 +47,9 @@ export function HomePage() {
       <StatusBar style="dark" />
       <ScrollView ref={scrollRef} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag" keyboardShouldPersistTaps="handled">
         <View style={styles.content}>
-          <HomeHeader query={query} onQueryChange={setQuery}
+          <HomeHeader query={query} onQueryChange={setQuery} user={user}
             onSearch={() => { Keyboard.dismiss(); scrollRef.current?.scrollTo({ y: discoveryY.current, animated: true }); }}
-            onAccountPress={() => router.navigate('/(tabs)/profile')} />
+            onAccountPress={() => router.navigate(user ? '/(tabs)/profile' : '/(auth)/login')} />
           {!search && <HeroBookshelf books={featured.books} isLoading={featured.isLoading} error={featured.error}
             onRetry={featured.reload} onSelectBook={selectBook} />}
           <View onLayout={(event) => { discoveryY.current = event.nativeEvent.layout.y; }}>
