@@ -19,3 +19,9 @@ export interface CatalogParams {
   categoryId?: number;
   authorId?: number;
 }
+
+export interface CatalogCategory {
+  id: number;
+  name: string;
+  description?: string | null;
+}

@@ -27,8 +27,8 @@ export function HomeHeader({ query, onQueryChange, onSearch, onAccountPress, use
       <View style={styles.search}>
         <AppIcon name="search" size={20} color={C.muted} />
         <TextInput
-          accessibilityLabel="Tìm sách hoặc tác giả"
-          placeholder="Tìm sách, tác giả bạn yêu thích..."
+          accessibilityLabel="Tìm theo tên sách"
+          placeholder="Tìm cuốn sách bạn yêu thích..."
           placeholderTextColor="#9A9FAA"
           style={styles.input}
           value={query}

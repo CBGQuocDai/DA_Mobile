@@ -1,17 +1,23 @@
 import { Tabs } from 'expo-router';
+import { BottomTabBar, type BottomTabBarProps } from 'expo-router/tabs';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AppIcon, type AppIconName } from '@/presentation/components/common/AppIcon';
 import { CustomerTheme as C } from '@/shared/constants/customerTheme.constants';
+import { MiniPlayer } from '@/presentation/components/customer/player/MiniPlayer';
 
 const tabIcons: Record<string, AppIconName> = { index: 'home', search: 'search', favorites: 'heart', profile: 'user' };
+
+function CustomerTabBar(props: BottomTabBarProps) {
+  return <View><MiniPlayer bottomInset={false} /><BottomTabBar {...props} /></View>;
+}
 
 export function TabsLayout() {
   const insets = useSafeAreaInsets();
 
   return (
-    <Tabs screenOptions={({ route }) => ({
+    <Tabs tabBar={(props) => <CustomerTabBar {...props} />} screenOptions={({ route }) => ({
       headerStyle: { backgroundColor: C.background },
       headerTintColor: C.text,
       headerShadowVisible: false,

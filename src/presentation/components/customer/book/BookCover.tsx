@@ -5,7 +5,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { AppIcon } from '@/presentation/components/common/AppIcon';
 import type { BookPreview } from './book.types';
 
-export function BookCover({ book, width }: { book: BookPreview; width: number }) {
+export function BookCover({ book, width }: { book: Pick<BookPreview, 'id' | 'title' | 'coverTitle' | 'author' | 'cover'>; width: number }) {
   const [failedUri, setFailedUri] = useState<string | null>(null);
   const uri = book.cover.uri;
   const hasRemoteCover = Boolean(uri && uri !== failedUri);

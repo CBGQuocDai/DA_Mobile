@@ -34,7 +34,7 @@
         }
       ],
       "expo-secure-store",
-      "expo-audio"
+      ["expo-audio", { "enableBackgroundPlayback": true, "recordAudioAndroid": false, "microphonePermission": false }]
     ],
     "experiments": {
       "typedRoutes": true,

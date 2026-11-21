@@ -42,7 +42,7 @@ export function BookshelfBook({ book, bookIndex, selectedIndex, count, position,
       accessibilityElementsHidden={!isVisible} importantForAccessibility={isVisible ? 'auto' : 'no-hide-descendants'}
       aria-hidden={!isVisible}
       style={[styles.book, { left: (stageWidth - width) / 2, width, height: width * 1.5 }, animatedStyle]}>
-      <Pressable accessibilityRole="button" accessibilityLabel={`${isSelected ? 'Xem giới thiệu' : 'Chọn sách'} ${book.title}`}
+      <Pressable accessibilityRole="button" accessibilityLabel={`${isSelected ? 'Xem chi tiết' : 'Chọn sách'} ${book.title}`}
         onPress={onPress} style={styles.pressable}>
         <BookCover book={book} width={width} />
       </Pressable>

@@ -6,6 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useColorScheme } from '@/presentation/hooks/common/useColorScheme';
 import { createQueryClient } from '@/infrastructure/query/queryClient';
 import { authStore } from '@/presentation/stores/auth.store';
+import { PlayerRuntime } from './PlayerRuntime';
 
 export function AppProviders({ children }: PropsWithChildren) {
   const scheme = useColorScheme();
@@ -16,6 +17,7 @@ export function AppProviders({ children }: PropsWithChildren) {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <PlayerRuntime />
           {children}
         </ThemeProvider>
       </QueryClientProvider>
