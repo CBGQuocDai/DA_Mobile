@@ -152,6 +152,9 @@ function BookDetailContent({ book }: { book: BookDetailPreview }) {
           <BookOverview
             book={book}
             isFavorite={playback.isFavorite}
+            isFavoriteBusy={playback.isFavoriteBusy}
+            isFavoriteDisabled={playback.isFavoriteDisabled}
+            favoriteError={playback.favoriteError}
             onToggleFavorite={playback.toggleFavorite}
             onPreview={playback.startPreview}
             onViewReviews={() => jumpTo("reviews")}

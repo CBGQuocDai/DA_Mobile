@@ -1,4 +1,10 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import { AppIcon } from "@/presentation/components/common/AppIcon";
 import { BookCover } from "@/presentation/components/customer/book/BookCover";
@@ -9,6 +15,9 @@ import type { BookDetailPreview } from "./bookDetail.types";
 interface Props {
   book: BookDetailPreview;
   isFavorite: boolean;
+  isFavoriteBusy: boolean;
+  isFavoriteDisabled: boolean;
+  favoriteError: string | null;
   onToggleFavorite: () => void;
   onPreview: () => void;
   onViewReviews: () => void;
@@ -19,6 +28,9 @@ interface Props {
 export function BookOverview({
   book,
   isFavorite,
+  isFavoriteBusy,
+  isFavoriteDisabled,
+  favoriteError,
   onToggleFavorite,
   onPreview,
   onViewReviews,
@@ -73,17 +85,31 @@ export function BookOverview({
           accessibilityLabel={
             isFavorite ? "Bỏ yêu thích sách" : "Thêm sách vào yêu thích"
           }
-          accessibilityState={{ selected: isFavorite }}
+          disabled={isFavoriteBusy || isFavoriteDisabled}
+          accessibilityState={{
+            selected: isFavorite,
+            busy: isFavoriteBusy,
+            disabled: isFavoriteBusy || isFavoriteDisabled,
+          }}
           onPress={onToggleFavorite}
           style={[styles.favorite, isFavorite && styles.saved]}
         >
-          <AppIcon
-            name={isFavorite ? "heartFilled" : "heart"}
-            size={21}
-            color={isFavorite ? C.accent : C.secondary}
-          />
+          {isFavoriteBusy ? (
+            <ActivityIndicator color={C.accent} />
+          ) : (
+            <AppIcon
+              name={isFavorite ? "heartFilled" : "heart"}
+              size={21}
+              color={isFavorite ? C.accent : C.secondary}
+            />
+          )}
         </Pressable>
       </View>
+      {favoriteError && (
+        <Text accessibilityRole="alert" style={styles.favoriteError}>
+          {favoriteError}
+        </Text>
+      )}
       <Text style={styles.author}>
         Tác giả: <Text style={styles.authorName}>{book.author}</Text>
       </Text>
@@ -239,6 +265,12 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   saved: { backgroundColor: C.accentLight, borderColor: "#F5C6D1" },
+  favoriteError: {
+    color: C.accentDark,
+    fontSize: 12,
+    lineHeight: 19,
+    marginTop: 8,
+  },
   author: { color: C.secondary, fontSize: 12, lineHeight: 21, marginTop: 12 },
   authorName: { color: C.text, fontWeight: "600" },
   voice: { color: C.secondary, fontSize: 11, marginTop: 4 },

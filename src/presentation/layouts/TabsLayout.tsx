@@ -65,7 +65,10 @@ export function TabsLayout() {
         name="search"
         options={{ title: "Tìm kiếm", headerShown: false }}
       />
-      <Tabs.Screen name="favorites" options={{ title: "Yêu thích" }} />
+      <Tabs.Screen
+        name="favorites"
+        options={{ title: "Yêu thích", headerShown: false }}
+      />
       <Tabs.Screen name="profile" options={{ title: "Cá nhân" }} />
     </Tabs>
   );
