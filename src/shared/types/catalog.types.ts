@@ -5,8 +5,10 @@ export interface CatalogBook {
   description?: string | null;
   price?: number | null;
   coverImage?: { path: string; url: string } | null;
-  status: 'PROCESSING' | 'UNPUBLISHED' | 'PUBLISHED' | 'FAILED';
-  authors?: { id: number; author: { id: number; fullName?: string | null } }[] | null;
+  status: "PROCESSING" | "UNPUBLISHED" | "PUBLISHED" | "FAILED";
+  authors?:
+    | { id: number; author: { id: number; fullName?: string | null } }[]
+    | null;
   categories?: { id: number; category: { id: number; name: string } }[] | null;
   averageRating?: number | null;
   ratingCount?: number | null;
@@ -24,4 +26,11 @@ export interface CatalogCategory {
   id: number;
   name: string;
   description?: string | null;
+}
+
+export interface CatalogAuthor {
+  id: number;
+  fullName: string;
+  avatar?: { path: string; url: string } | null;
+  bio?: string | null;
 }
